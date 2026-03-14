@@ -1,1 +1,1 @@
-# whatsapp-site
+<title>WhatsApp Link Generator</title>
