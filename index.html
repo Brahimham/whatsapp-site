@@ -4,27 +4,24 @@
 <meta charset="UTF-8">
 <title>WhatsApp Link Generator</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <style>
-
 body{
-font-family: Arial;
-background:#f4f4f4;
+font-family:Arial;
 text-align:center;
+background:#f2f2f2;
 }
 
 .container{
 background:white;
-width:400px;
+width:350px;
 margin:auto;
-margin-top:80px;
+margin-top:100px;
 padding:30px;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-input, textarea{
+input{
 width:100%;
 padding:10px;
 margin:10px 0;
@@ -40,10 +37,9 @@ font-size:16px;
 cursor:pointer;
 }
 
-#qrcode{
-margin-top:20px;
+a{
+color:green;
 }
-
 </style>
 
 </head>
@@ -56,13 +52,11 @@ margin-top:20px;
 
 <input id="number" placeholder="اكتب الرقم مع رمز الدولة">
 
-<textarea id="message" placeholder="اكتب الرسالة"></textarea>
+<input id="message" placeholder="اكتب الرسالة">
 
 <button onclick="generate()">إنشاء الرابط</button>
 
 <p id="result"></p>
-
-<div id="qrcode"></div>
 
 </div>
 
@@ -77,10 +71,6 @@ let link = "https://wa.me/"+number+"?text="+message
 
 document.getElementById("result").innerHTML =
 '<a href="'+link+'" target="_blank">'+link+'</a>'
-
-document.getElementById("qrcode").innerHTML=""
-
-new QRCode(document.getElementById("qrcode"), link)
 
 }
 
