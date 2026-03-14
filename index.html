@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>WhatsApp Link Generator</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f4f4;
+text-align:center;
+}
+
+.container{
+background:white;
+width:400px;
+margin:auto;
+margin-top:80px;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input, textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+background:#25D366;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+font-size:16px;
+cursor:pointer;
+}
+
+#qrcode{
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>مولد رابط واتساب</h2>
+
+<input id="number" placeholder="اكتب الرقم مع رمز الدولة">
+
+<textarea id="message" placeholder="اكتب الرسالة"></textarea>
+
+<button onclick="generate()">إنشاء الرابط</button>
+
+<p id="result"></p>
+
+<div id="qrcode"></div>
+
+</div>
+
+<script>
+
+function generate(){
+
+let number = document.getElementById("number").value
+let message = encodeURIComponent(document.getElementById("message").value)
+
+let link = "https://wa.me/"+number+"?text="+message
+
+document.getElementById("result").innerHTML =
+'<a href="'+link+'" target="_blank">'+link+'</a>'
+
+document.getElementById("qrcode").innerHTML=""
+
+new QRCode(document.getElementById("qrcode"), link)
+
+}
+
+</script>
+
+</body>
+</html>
